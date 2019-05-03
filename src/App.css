@@ -20,6 +20,7 @@
 
 #order_text{
   font-size: 1.2em;
+  color: black;
 }
 
 #order_card{
@@ -31,4 +32,12 @@
 #order_div{
   text-align: center;
   margin-top: 10px;
+}
+#order_header{
+  font-style: italic;
+  color: Maroon;
+}
+#order_instruction{
+  font-size: 1.5em;
+  color: navy;
 }

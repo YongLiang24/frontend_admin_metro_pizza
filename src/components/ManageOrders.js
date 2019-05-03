@@ -10,45 +10,82 @@ class ManageOrders extends Component{
       orderListIds: [],
       toggleLiveUpdate: false,
       liveUpdateText: 'Off',
-      toggleInterval: ''
+      toggleInterval: '',
+      customerNames: [],
+      customerPhones: [],
+      specialInstructions: [],
+      totalPrices: [],
+      orderTimes: []
     }
   }
   componentDidMount(){
     fetch('http://localhost:3000/api/v1/orders')
     .then(resp => resp.json())
     .then(json=>{
-      // console.log(json[0].id)
-      const tempOrder = []
-      const tempId = []
+      const tempOrder = [];
+      const tempId = [];
+      const tempName = [];
+      const tempPhone = [];
+      const tempTime =[];
+      const tempInstruction = [];
+      const tempPrice =[]
       this.setState({allOrderLists: json})
       this.state.allOrderLists.reverse()
       this.state.allOrderLists.map((order, index)=>{
-         tempOrder.push(order.order_lists.toString().replace(/=>/g, ": ").replace(/{/g, "").replace(/}/g, "").replace(/,/g, " || ").replace(/"/g, ""))
-         tempId.push(json[index].id)
+          tempOrder.push(order.order_lists.toString().replace(/=>/g, ": ").replace(/{/g, "").replace(/}/g, "").replace(/,/g, " || ").replace(/"/g, ""));
+         tempId.push(json[index].id);
+         tempName.push(this.state.allOrderLists[index].Customer_Name);
+         tempPhone.push(this.state.allOrderLists[index].Customer_Phone);
+         tempTime.push(this.state.allOrderLists[index].Order_Time);
+         tempInstruction.push(this.state.allOrderLists[index].Special_Instruction);
+         tempPrice.push(this.state.allOrderLists[index].Total_Price);
+         return null;
       })
-      this.setState({formattedOrderLists: tempOrder, orderListIds: tempId})
-
-      console.log("order ids", this.state.orderListIds)
+      this.setState({
+        formattedOrderLists: tempOrder,
+        orderListIds: tempId,
+        customerNames: tempName,
+        customerPhones: tempPhone,
+        orderTimes: tempTime,
+        specialInstructions: tempInstruction,
+        totalPrices: tempPrice
+       })
     })
-
-
   }
 
   handleUpdateOrderList = ()=>{
-
+    console.log("is living updating:")
     fetch('http://localhost:3000/api/v1/orders')
     .then(resp => resp.json())
     .then(json=>{
-      console.log(json[0].id)
-      const tempOrder = []
-      const tempId = []
+      const tempOrder = [];
+      const tempId = [];
+      const tempName = [];
+      const tempPhone = [];
+      const tempTime =[];
+      const tempInstruction = [];
+      const tempPrice =[]
       this.setState({allOrderLists: json})
       this.state.allOrderLists.reverse()
       this.state.allOrderLists.map((order, index)=>{
-         tempOrder.push(order.order_lists.toString().replace(/=>/g, ": ").replace(/{/g, "").replace(/}/g, "").replace(/,/g, " || ").replace(/"/g, ""))
-         tempId.push(json[index].id)
+          tempOrder.push(order.order_lists.toString().replace(/=>/g, ": ").replace(/{/g, "").replace(/}/g, "").replace(/,/g, " || ").replace(/"/g, ""));
+         tempId.push(json[index].id);
+         tempName.push(this.state.allOrderLists[index].Customer_Name);
+         tempPhone.push(this.state.allOrderLists[index].Customer_Phone);
+         tempTime.push(this.state.allOrderLists[index].Order_Time);
+         tempInstruction.push(this.state.allOrderLists[index].Special_Instruction);
+         tempPrice.push(this.state.allOrderLists[index].Total_Price);
+         return null;
       })
-      this.setState({formattedOrderLists: tempOrder, orderListIds: tempId})
+      this.setState({
+        formattedOrderLists: tempOrder,
+        orderListIds: tempId,
+        customerNames: tempName,
+        customerPhones: tempPhone,
+        orderTimes: tempTime,
+        specialInstructions: tempInstruction,
+        totalPrices: tempPrice
+       })
     })
   }
 
@@ -59,44 +96,40 @@ class ManageOrders extends Component{
   }
 
   handleDeleteOrder = (ev)=>{
-    console.log(ev.target.name)
     fetch(`http://localhost:3000/api/v1/orders/${ev.target.name}`,{
       method: 'DELETE'})
     setTimeout(this.handleUpdateOrderList, 2000)
   }
 
-  handleLiveUpdate = ()=>{
-
+  handleLiveUpdate = (ev)=>{
     this.setState({ toggleLiveUpdate: !this.state.toggleLiveUpdate })
     if(this.state.toggleLiveUpdate){
       this.setState({liveUpdateText: 'Off'})
       clearInterval(this.state.toggleInterval)
     }
     else{
-      this.setState({liveUpdateText: 'On'})
-      this.state.toggleInterval = setInterval(this.handleUpdateOrderList, 2000)
+      this.setState({liveUpdateText: 'On', toggleInterval: setInterval(this.handleUpdateOrderList, 2000)})
     }
   }
 
   render(){
     return(
       <div id="order_div">
-        <Button toggle  active={this.state.toggleLiveUpdate} onClick={this.handleLiveUpdate}>
+        <Button toggle   active={this.state.toggleLiveUpdate} onClick={this.handleLiveUpdate}>
           Live Update {this.state.liveUpdateText}</Button> <br/><br/>
         <Card.Group centered>
           {
             this.state.formattedOrderLists.map((order, index)=>{
               return   <Card fluid id='order_card' key={index} >
                 <Card.Content>
-                  <Card.Header>Order#: {index}</Card.Header>
-                  <Card.Description id="order_text"><strong>{order}</strong></Card.Description>
+                  <Card.Header id='order_header'>Customer Name: {this.state.customerNames[index]} || Phone: {this.state.customerPhones[index]} || Time: {this.state.orderTimes[index]}</Card.Header>
+                  <Card.Description id="order_text"><strong>Items: - {order}</strong></Card.Description><br/>
+                  <Card.Description id="order_instruction">Notes: {this.state.specialInstructions[index]}<br/><br/>Total Cost: ${this.state.totalPrices[index]}</Card.Description>
                 </Card.Content>
                 <Card.Content extra>
                   <Button.Group fluid id="order_button">
-                    <Button positive  onClick={this.handleButtonDisable}>Confirm Order</Button>
-                    <Button.Or />
-                    <Button onDoubleClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order (Double Click)</Button>
-                  </Button.Group>
+                    <Button positive  onClick={this.handleButtonDisable}>Confirm Order</Button>  <Button.Or />
+                    <Button onDoubleClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order (Double Click)</Button>  </Button.Group>
                 </Card.Content>
               </Card>
             })

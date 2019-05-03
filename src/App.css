@@ -17,3 +17,18 @@
    text-align: center;
    margin: auto;
 }
+
+#order_text{
+  font-size: 1.2em;
+}
+
+#order_card{
+  width: 70%;
+}
+#order_card:hover{
+  transform: scale(1.03);
+}
+#order_div{
+  text-align: center;
+  margin-top: 10px;
+}

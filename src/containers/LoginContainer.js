@@ -4,6 +4,7 @@ import CreateMenuItems from '../components/CreateMenuItems';
 import ManageItems from '../components/ManageItems';
 import {Header} from 'semantic-ui-react';
 import AfterLoggedHeader from '../components/AfterLoggedHeader';
+import ManageOrders from '../components/ManageOrders'
 
 class LoginContainer extends Component{
   constructor(){
@@ -77,6 +78,7 @@ class LoginContainer extends Component{
       headers:{'Content-Type': 'application/json',  Accept: 'application/json' },
       body: JSON.stringify({menu_item: items})
     })
+
   }
 
   handleToggleDisplay =(ev)=>{
@@ -106,6 +108,7 @@ class LoginContainer extends Component{
         return(
           <div>
             <AfterLoggedHeader handleLogout={this.handleLogout} handleToggleDisplay={this.handleToggleDisplay}/>
+            <ManageOrders />
           </div>
         )
       }}
@@ -113,7 +116,7 @@ class LoginContainer extends Component{
       return (
         <div>
           <Header as='h1' textAlign='center' color='brown'>
-            <strong>Elf Pizza Management Center</strong>
+            <strong>Metro Pizza Management Center</strong>
           </Header>  <hr />
           <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin}/>
         </div>

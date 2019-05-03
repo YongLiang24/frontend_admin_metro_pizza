@@ -4,7 +4,7 @@ const AfterLoggedHeader = (props)=>{
   return(
     <div>
       <Header as='h1' textAlign='center' color='brown'>
-        Elf Pizza Management Center<br/>
+        Metro Pizza Management Center<br/>
         <button onClick={props.handleLogout} className="small ui button primary">Logout</button>
       </Header>
       <hr />
@@ -15,7 +15,6 @@ const AfterLoggedHeader = (props)=>{
           <button className="ui button teal" value='createItemForm' onClick={props.handleToggleDisplay}>Create Items</button>
         </div>
       </Header>
-      <br/>
     </div>
   )
 }

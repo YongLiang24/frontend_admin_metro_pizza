@@ -98,9 +98,7 @@ class ManageItems extends Component{
             {' '}
             <button type='submit' className="mini circular ui teal button">Show items</button>
           </form>
-        </div>
-      )
-    }
+        </div>)}
     else{
       return(
         <div className='manageItemList'>
@@ -119,14 +117,10 @@ class ManageItems extends Component{
             {
               this.state.filteredItems.map((item, index) =>{
                 return <h3 key={index}>Name: {item.name} - {item.category} -{' '}
-                  <button onClick={this.handleDeleteItem} value={item.id} className="mini circular ui teal button">Delete</button><hr/></h3>
-              })
+                  <button onClick={this.handleDeleteItem} value={item.id} className="mini circular ui teal button">Delete</button><hr/></h3>  })
             }
           </div>
-        </div>
-      )
-    }
-
+        </div>)}
   }
 }
 export default ManageItems

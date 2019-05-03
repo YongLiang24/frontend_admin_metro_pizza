@@ -19,7 +19,7 @@ class ManageOrders extends Component{
     }
   }
   componentDidMount(){
-    fetch('http://localhost:3000/api/v1/orders')
+    fetch('https://backend-metro-pizza.herokuapp.com/api/v1/orders')
     .then(resp => resp.json())
     .then(json=>{
       const tempOrder = [];
@@ -55,7 +55,7 @@ class ManageOrders extends Component{
 
   handleUpdateOrderList = ()=>{
     console.log("is living updating:")
-    fetch('http://localhost:3000/api/v1/orders')
+    fetch('https://backend-metro-pizza.herokuapp.com/api/v1/orders')
     .then(resp => resp.json())
     .then(json=>{
       const tempOrder = [];
@@ -96,7 +96,7 @@ class ManageOrders extends Component{
   }
 
   handleDeleteOrder = (ev)=>{
-    fetch(`http://localhost:3000/api/v1/orders/${ev.target.name}`,{
+    fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/orders/${ev.target.name}`,{
       method: 'DELETE'})
     setTimeout(this.handleUpdateOrderList, 2000)
   }

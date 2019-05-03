@@ -30,7 +30,7 @@ class LoginContainer extends Component{
 
   handleLoginSubmit = (ev)=>{
     ev.preventDefault()
-    fetch('http://localhost:3000/api/v1/login',{
+    fetch('https://backend-metro-pizza.herokuapp.com/api/v1/login',{
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -73,7 +73,7 @@ class LoginContainer extends Component{
       user_id: this.state.user_id,
       category: ev.target.selectCategory.value
     }
-    fetch("http://localhost:3000/api/v1/menu_items",{
+    fetch("https://backend-metro-pizza.herokuapp.com/api/v1/menu_items",{
       method: 'POST',
       headers:{'Content-Type': 'application/json',  Accept: 'application/json' },
       body: JSON.stringify({menu_item: items})

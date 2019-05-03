@@ -15,7 +15,7 @@ class ManageItems extends Component{
   }
 
   updateItemList =()=>{
-    fetch('http://localhost:3000/api/v1/menu_items')
+    fetch('https://backend-metro-pizza.herokuapp.com/api/v1/menu_items')
     .then(resp => resp.json())
     .then(json=>{
       // console.log('checkUserItems..',json)
@@ -26,7 +26,7 @@ class ManageItems extends Component{
   }
 
   updateAfterDelete =()=>{
-    fetch('http://localhost:3000/api/v1/menu_items')
+    fetch('https://backend-metro-pizza.herokuapp.com/api/v1/menu_items')
     .then(resp => resp.json())
     .then(json=>{
       // console.log('checkUserItems..',json)
@@ -38,7 +38,7 @@ class ManageItems extends Component{
 
   handleDeleteItem = (ev)=>{
     console.log('check delete', ev.target.value)
-    fetch(`http://localhost:3000/api/v1/menu_items/${ev.target.value}`,{
+    fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/menu_items/${ev.target.value}`,{
       method: 'DELETE'
     })
     setTimeout(this.updateAfterDelete, 2000)

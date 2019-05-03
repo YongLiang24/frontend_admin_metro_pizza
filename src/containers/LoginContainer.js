@@ -119,6 +119,9 @@ class LoginContainer extends Component{
             <strong>Metro Pizza Management Center</strong>
           </Header>  <hr />
           <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin}/>
+          <Header as='h3' textAlign='center' color='black'>
+            <strong>Demo Account: <hr/>Username: metro <hr/> Password: pizza<hr/></strong>
+          </Header>
         </div>
       )
     }

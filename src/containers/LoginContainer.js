@@ -24,7 +24,7 @@ class LoginContainer extends Component{
 
   handleInputLogin = (ev)=>{
     this.setState({
-      [ev.target.name]: ev.target.value
+      [ev.target.name]: ev.target.value.toLowerCase()
     })
   }
 
@@ -120,7 +120,7 @@ class LoginContainer extends Component{
           </Header>  <hr />
           <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin}/>
           <Header as='h3' textAlign='center' color='black'>
-            <strong>Demo Account: <hr/>Username: metro <hr/> Password: pizza<hr/></strong>
+            <strong>Demo Account: Not case sensitive <hr/>Username: metro <hr/> Password: pizza<hr/></strong>
           </Header>
         </div>
       )

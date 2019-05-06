@@ -51,6 +51,7 @@ class ManageOrders extends Component{
         totalPrices: tempPrice
        })
     })
+    this.handleLiveUpdate()
   }
 
   handleUpdateOrderList = ()=>{
@@ -96,9 +97,13 @@ class ManageOrders extends Component{
   }
 
   handleDeleteOrder = (ev)=>{
-    fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/orders/${ev.target.name}`,{
-      method: 'DELETE'})
-    setTimeout(this.handleUpdateOrderList, 2000)
+    let x = window.confirm("Are you sure you want to delete this?");
+    if (x){
+      fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/orders/${ev.target.name}`,{
+        method: 'DELETE'})
+        setTimeout(this.handleUpdateOrderList, 2000)
+      return true;}
+    else {return false;}
   }
 
   handleLiveUpdate = (ev)=>{
@@ -108,7 +113,7 @@ class ManageOrders extends Component{
       clearInterval(this.state.toggleInterval)
     }
     else{
-      this.setState({liveUpdateText: 'On', toggleInterval: setInterval(this.handleUpdateOrderList, 2000)})
+      this.setState({liveUpdateText: 'On', toggleInterval: setInterval(this.handleUpdateOrderList, 4000)})
     }
   }
 
@@ -120,19 +125,13 @@ class ManageOrders extends Component{
         <Card.Group centered>
           {
             this.state.formattedOrderLists.map((order, index)=>{
-              return   <Card fluid id='order_card' key={index} >
-                <Card.Content>
-                  <Card.Header id='order_header'>Customer Name: {this.state.customerNames[index]} || Phone: {this.state.customerPhones[index]} || Time: {this.state.orderTimes[index]}</Card.Header>
-                  <Card.Description id="order_text"><strong>Items: - {order}</strong></Card.Description><br/>
-                  <Card.Description id="order_instruction">Notes: {this.state.specialInstructions[index]}<br/><br/>Total Cost: ${this.state.totalPrices[index]}</Card.Description>
-                </Card.Content>
-                <Card.Content extra>
-                  <Button.Group fluid id="order_button">
-                    <Button positive  onClick={this.handleButtonDisable}>Confirm Order</Button>  <Button.Or />
-                    <Button onDoubleClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order (Double Click)</Button>  </Button.Group>
-                </Card.Content>
-              </Card>
-            })
+              return <Card key={index} id='order_card'
+                header=<div><strong>Customer Name: {this.state.customerNames[index]} || Phone: {this.state.customerPhones[index]} || Time: {this.state.orderTimes[index]}</strong><hr/></div>
+                description=<div><strong>Items: - {order}</strong><hr/>Notes:<br/> {this.state.specialInstructions[index]}<br/><br/>Total Cost: ${this.state.totalPrices[index]}</div>
+                extra=<Button.Group> <Button positive onClick={this.handleButtonDisable}>Confirm Order</Button> <Button.Or />
+                  <Button  onClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order</Button>
+                </Button.Group>
+                     /> })
           }
         </Card.Group>
       </div>

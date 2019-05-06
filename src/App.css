@@ -23,9 +23,6 @@
   color: black;
 }
 
-#order_card{
-  width: 70%;
-}
 #order_card:hover{
   transform: scale(1.03);
 }
@@ -40,4 +37,13 @@
 #order_instruction{
   font-size: 1.5em;
   color: navy;
+}
+@media screen and (max-width:1000px) {
+  #order_card:hover{
+    transform: none;
+  }
+}
+
+#myBody{
+
 }

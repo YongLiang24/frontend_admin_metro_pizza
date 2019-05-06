@@ -55,7 +55,6 @@ class ManageOrders extends Component{
   }
 
   handleUpdateOrderList = ()=>{
-    console.log("is living updating:")
     fetch('https://backend-metro-pizza.herokuapp.com/api/v1/orders')
     .then(resp => resp.json())
     .then(json=>{

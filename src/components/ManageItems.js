@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-
+import { Card, Button } from 'semantic-ui-react';
 class ManageItems extends Component{
   constructor(){
     super()
@@ -18,7 +18,6 @@ class ManageItems extends Component{
     fetch('https://backend-metro-pizza.herokuapp.com/api/v1/menu_items')
     .then(resp => resp.json())
     .then(json=>{
-      // console.log('checkUserItems..',json)
       this.setState({
         displayItems: json
       })
@@ -37,17 +36,18 @@ class ManageItems extends Component{
   }
 
   handleDeleteItem = (ev)=>{
-    console.log('check delete', ev.target.value)
-    fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/menu_items/${ev.target.value}`,{
-      method: 'DELETE'
-    })
-    setTimeout(this.updateAfterDelete, 2000)
+    let x = window.confirm("Are you sure you want to delete this?");
+    if (x){
+      fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/menu_items/${ev.target.value}`,{  method: 'DELETE' })
+      setTimeout(this.updateAfterDelete, 2000)
+      return true;}
+    else {return false;}
   }
 
   handleShowItemForm = (ev)=>{
     ev.preventDefault()
-    if(this.state.hideItems){this.setState({hideItems: false})}
-    else{this.setState({hideItems: true})}
+    // if(this.state.hideItems){this.setState({hideItems: false})}
+    // else{this.setState({hideItems: true})}
     this.updateItemList()
 
     switch (ev.target.filterCategories.value){
@@ -85,7 +85,6 @@ class ManageItems extends Component{
   }
 
   render(){
-    if(this.state.hideItems){
       return(
         <div className='manageItemList'>
           <form onSubmit={this.handleShowItemForm}>
@@ -97,30 +96,19 @@ class ManageItems extends Component{
             </select>
             {' '}
             <button type='submit' className="mini circular ui teal button">Show items</button>
-          </form>
-        </div>)}
-    else{
-      return(
-        <div className='manageItemList'>
-          <form onSubmit={this.handleShowItemForm}>
-            Filter:  <select name='filterCategories'>
-              <option value='all'>All</option>
-              <option value='pizza'>Pizza</option>
-              <option value='wing'>Wings</option>
-              <option value='beverage'>Beverage</option>
-            </select>
-            {' '}
-            <button type='submit' className="mini circular ui teal button">Hide items</button>
-          </form>
-          <hr/>
-          <div >
+          </form>  <br/>
+          <Card.Group centered>
             {
               this.state.filteredItems.map((item, index) =>{
-                return <h3 key={index}>Name: {item.name} - {item.category} -{' '}
-                  <button onClick={this.handleDeleteItem} value={item.id} className="mini circular ui teal button">Delete</button><hr/></h3>  })
+                return  <Card key={index} header=<div>{item.name} - $ {item.price}</div>
+                  description=<div>category: {item.category}<br/> id: {item.id}</div> extra=<Button onClick={this.handleDeleteItem} value={item.id} negative>Delete</Button>/> })
             }
-          </div>
-        </div>)}
+          </Card.Group>
+        </div>)
+
   }
 }
 export default ManageItems
+
+{/* <h3 key={index}>Name: {item.name} - {item.category} -{' '}
+  <button onClick={this.handleDeleteItem} value={item.id} className="mini circular ui teal button">Delete</button><hr/></h3> */}

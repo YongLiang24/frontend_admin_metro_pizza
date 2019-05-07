@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Popup } from 'semantic-ui-react';
 class ManageOrders extends Component{
   constructor(){
     super()
@@ -126,8 +126,9 @@ class ManageOrders extends Component{
   render(){
     return(
       <div id="order_div">
-        <Button toggle   active={this.state.toggleLiveUpdate} onClick={this.handleLiveUpdate}>
-          Live Update {this.state.liveUpdateText}</Button> <br/><br/>
+        <Popup content="Turn LiveUpdate off to stop receiving new orders" trigger={<Button toggle   active={this.state.toggleLiveUpdate} onClick={this.handleLiveUpdate}>
+          Live Update {this.state.liveUpdateText}</Button>}/>
+        <br/><br/>
         <Card.Group centered>
           {
             this.state.formattedOrderLists.map((order, index)=>{

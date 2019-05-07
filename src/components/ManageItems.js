@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Card, Button } from 'semantic-ui-react';
+import { Card, Button, Popup } from 'semantic-ui-react';
 class ManageItems extends Component{
   constructor(){
     super()
@@ -95,7 +95,8 @@ class ManageItems extends Component{
               <option value='beverage'>Beverage</option>
             </select>
             {' '}
-            <button type='submit' className="mini circular ui teal button">Show items</button>
+            <Popup content="Display existing menu items, may use with filter" trigger={<Button color='teal'>Show items</Button>}/>
+
           </form>  <br/>
           <Card.Group centered>
             {

@@ -15,10 +15,10 @@ const AdminLogin = (props)=>{
               <Form size='large' onSubmit={props.handleLoginSubmit}>
                 <Segment stacked>
                   <strong>Username:</strong>
-                  <Form.Input fluid icon='user' iconPosition='left' type='text' name='usernameInput' onChange={props.handleInputLogin} required placeholder="username" />
+                  <Form.Input fluid icon='user' iconPosition='left' type='text' name='usernameInput' onChange={props.handleInputLogin} required placeholder="username" value={props.loginUser}/>
                   <strong>Password:</strong>
                   <Form.Input  fluid  icon='lock' iconPosition='left'  type='password'
-                    name='passwordInput' onChange={props.handleInputLogin} required placeholder='password'  />
+                    name='passwordInput' onChange={props.handleInputLogin} required placeholder='password' value={props.loginPassword} />
                   <Button color='teal' fluid size='large' type='submit' value='Log In' className="ui button positive">
                     <strong>Login</strong>
                   </Button>

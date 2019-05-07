@@ -53,3 +53,10 @@
 #dropdown_background{
   background-color: WhiteSmoke;
 }
+#tab_menu{
+  position: relative;
+  text-align: center;
+}
+.about_p{
+  font-size: 1.3em;
+}

@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown, Button, Icon} from 'semantic-ui-react';
+import {Dropdown, Button, Icon, Popup} from 'semantic-ui-react';
 
 const DropDownMenu =(props)=>{
   return(
@@ -7,7 +7,7 @@ const DropDownMenu =(props)=>{
       <Dropdown icon=<Icon  name='bars' size='large' ></Icon> >
         <Dropdown.Menu id="dropdown_background">
           <Button.Group vertical>
-            <Button ><a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">To Online Order Site</a></Button>
+          <Button ><a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">Visit Pizza Order Site</a></Button>}
           </Button.Group><hr/>
           <a href="https://github.com/YongLiang24" target="_blank" rel="noopener noreferrer">
             <Icon name="github" size='large' link/></a>

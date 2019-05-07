@@ -1,5 +1,5 @@
 import React from 'react';
-import { Header } from 'semantic-ui-react';
+import { Header, Popup } from 'semantic-ui-react';
 import DropDownMenu from './DropDownMenu'
 const AfterLoggedHeader = (props)=>{
   return(
@@ -12,9 +12,9 @@ const AfterLoggedHeader = (props)=>{
       <hr />
       <Header textAlign='center'>
         <div className="ui small buttons " >
-          <button className="ui button active teal"  value='viewOrders' onClick={props.handleToggleDisplay}>View Orders</button>
+          <Popup content="New Orders will display in this section" trigger={  <button className="ui button active teal"  value='viewOrders' onClick={props.handleToggleDisplay}>View Orders</button>}/>
           <div className="or"></div>
-          <button className="ui button teal" value='createItemForm' onClick={props.handleToggleDisplay}>Create Items</button>
+          <Popup content="Menu items can be created or deleted in this section" trigger={<button className="ui button teal" value='createItemForm' onClick={props.handleToggleDisplay}>Create Items</button>}/>
         </div>
       </Header>
     </div>

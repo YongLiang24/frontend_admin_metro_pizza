@@ -2,18 +2,26 @@ import React, {Component } from 'react';
 import AdminLogin from '../components/AdminLogin';
 import CreateMenuItems from '../components/CreateMenuItems';
 import ManageItems from '../components/ManageItems';
-import {Header} from 'semantic-ui-react';
+import {Header, Tab, Icon} from 'semantic-ui-react';
 import AfterLoggedHeader from '../components/AfterLoggedHeader';
 import ManageOrders from '../components/ManageOrders';
 import DropDownMenu from '../components/DropDownMenu';
+
+const panes = [{ menuItem: {icon: 'users', content: 'User Account', key: 'users'},
+              render:() => <Tab.Pane><p className='about_p'><strong>Demo Account</strong><br/><strong>Username:</strong> metro <br/><strong>Password:</strong> pizza</p></Tab.Pane> },
+              { menuItem:{icon: 'book', content: 'About Page', key: 'book' }, render: () => <Tab.Pane><p className='about_p'>Metro Pizza Management Center allows administrators<br/> to create or delete menu items for <a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">Metro Pizza</a> site,<br/> as well as receive online orders in real time and manage such orders.<br/> This site was built with React.js and Semantic UI for User Interface and Ruby on Rails as backend.</p></Tab.Pane> },
+              { menuItem:{icon:'user', content:'About Me', key:'user'}, render: () => <Tab.Pane><p className='about_p'>Yong Liang is a Full stack web developer with<br/> a passion for software development and new technologies.<br/> With experience in Ruby on Rails, JavaScript,<br/> and React and a background in computer science.<br/><a href="https://github.com/YongLiang24" target="_blank" rel="noopener noreferrer">
+                <Icon name="github" size='large' link/></a>
+                <a href="https://www.linkedin.com/in/yongliang24/" target="_blank" rel="noopener noreferrer">
+                  <Icon name="linkedin" size='large' link/></a> </p></Tab.Pane> },]
 
 class LoginContainer extends Component{
   constructor(){
     super()
     this.state ={
       isLogin: false,
-      usernameInput: '',
-      passwordInput: '',
+      usernameInput: 'metro',
+      passwordInput: 'pizza',
       item_name: '',
       item_description: '',
       item_price: 0,
@@ -120,10 +128,11 @@ class LoginContainer extends Component{
             <DropDownMenu/>
             <strong>Metro Pizza Management Center</strong>
           </Header> <hr/>
-          <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin}/>
-          <Header as='h3' textAlign='center' color='black'>
+          <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin} loginUser={this.state.usernameInput} loginPassword={this.state.passwordInput}/>
+          <Tab panes={panes} id="tab_menu"/>
+          {/* <Header as='h3' textAlign='center' color='black'>
             <strong>Demo Account: Not case sensitive <hr/>Username: metro <hr/> Password: pizza<hr/></strong>
-          </Header>
+          </Header> */}
         </div>
       )
     }

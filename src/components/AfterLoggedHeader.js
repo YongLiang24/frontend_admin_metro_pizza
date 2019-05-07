@@ -1,9 +1,11 @@
 import React from 'react';
 import { Header } from 'semantic-ui-react';
+import DropDownMenu from './DropDownMenu'
 const AfterLoggedHeader = (props)=>{
   return(
     <div>
       <Header as='h1' textAlign='center' color='brown'>
+        <DropDownMenu/>
         Metro Pizza Management Center<br/>
         <button onClick={props.handleLogout} className="small ui button primary">Logout</button>
       </Header>

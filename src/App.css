@@ -23,8 +23,10 @@
   color: black;
 }
 
+
 #order_card:hover{
   transform: scale(1.03);
+
 }
 #order_div{
   text-align: center;
@@ -43,7 +45,11 @@
     transform: none;
   }
 }
-
-#myBody{
-
+#menuIcon{
+  float:left;
+  /* z-index: 10;
+  background-color: darkgrey; */
+}
+#dropdown_background{
+  background-color: WhiteSmoke;
 }

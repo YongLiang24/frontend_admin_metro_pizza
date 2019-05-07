@@ -4,7 +4,8 @@ import CreateMenuItems from '../components/CreateMenuItems';
 import ManageItems from '../components/ManageItems';
 import {Header} from 'semantic-ui-react';
 import AfterLoggedHeader from '../components/AfterLoggedHeader';
-import ManageOrders from '../components/ManageOrders'
+import ManageOrders from '../components/ManageOrders';
+import DropDownMenu from '../components/DropDownMenu';
 
 class LoginContainer extends Component{
   constructor(){
@@ -116,8 +117,9 @@ class LoginContainer extends Component{
       return (
         <div>
           <Header as='h1' textAlign='center' color='brown'>
+            <DropDownMenu/>
             <strong>Metro Pizza Management Center</strong>
-          </Header> 
+          </Header> <hr/>
           <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin}/>
           <Header as='h3' textAlign='center' color='black'>
             <strong>Demo Account: Not case sensitive <hr/>Username: metro <hr/> Password: pizza<hr/></strong>

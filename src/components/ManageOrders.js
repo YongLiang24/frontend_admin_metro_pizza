@@ -54,6 +54,10 @@ class ManageOrders extends Component{
     this.handleLiveUpdate()
   }
 
+  componentWillUnmount(){
+    clearInterval(this.state.toggleInterval)
+  }
+
   handleUpdateOrderList = ()=>{
     fetch('https://backend-metro-pizza.herokuapp.com/api/v1/orders')
     .then(resp => resp.json())
@@ -96,13 +100,16 @@ class ManageOrders extends Component{
   }
 
   handleDeleteOrder = (ev)=>{
-    let x = window.confirm("Are you sure you want to delete this?");
+    const x = window.confirm("Are you sure you want to delete this?");
     if (x){
       fetch(`https://backend-metro-pizza.herokuapp.com/api/v1/orders/${ev.target.name}`,{
-        method: 'DELETE'})
-        setTimeout(this.handleUpdateOrderList, 2000)
-      return true;}
-    else {return false;}
+        method: 'DELETE'});
+      setTimeout(this.handleUpdateOrderList, 2000);
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   handleLiveUpdate = (ev)=>{

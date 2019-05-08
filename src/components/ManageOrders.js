@@ -137,8 +137,7 @@ class ManageOrders extends Component{
                 description=<div><strong>Items: - {order}</strong><hr/>Notes:<br/> {this.state.specialInstructions[index]}<br/><br/>Total Cost: ${this.state.totalPrices[index]}</div>
                 extra=<Button.Group> <Button positive onClick={this.handleButtonDisable}>Confirm Order</Button> <Button.Or />
                   <Button  onClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order</Button>
-                </Button.Group>
-                     /> })
+                </Button.Group> /> })
           }
         </Card.Group>
       </div>

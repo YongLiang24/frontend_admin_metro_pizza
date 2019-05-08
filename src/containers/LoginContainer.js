@@ -7,53 +7,34 @@ import AfterLoggedHeader from '../components/AfterLoggedHeader';
 import ManageOrders from '../components/ManageOrders';
 import DropDownMenu from '../components/DropDownMenu';
 
-const panes = [{ menuItem: {icon: 'users', content: 'User Account', key: 'users'},
-              render:() => <Tab.Pane><p className='about_p'><strong>Demo Account</strong><br/><strong>Username:</strong> metro <br/><strong>Password:</strong> pizza</p></Tab.Pane> },
-              { menuItem:{icon: 'book', content: 'About Page', key: 'book' }, render: () => <Tab.Pane><p className='about_p'>Metro Pizza Management Center allows administrators<br/> to create or delete menu items for <a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">Metro Pizza</a> site,<br/> as well as receive online orders in real time and manage such orders.<br/> This site was built with React.js and Semantic UI for User Interface and Ruby on Rails as backend.</p></Tab.Pane> },
-              { menuItem:{icon:'user', content:'About Me', key:'user'}, render: () => <Tab.Pane><p className='about_p'>Yong Liang is a Full stack web developer with<br/> a passion for software development and new technologies.<br/> With experience in Ruby on Rails, JavaScript,<br/> and React and a background in computer science.<br/><a href="https://github.com/YongLiang24" target="_blank" rel="noopener noreferrer">
-                <Icon name="github" size='large' link/></a>
-                <a href="https://www.linkedin.com/in/yongliang24/" target="_blank" rel="noopener noreferrer">
-                  <Icon name="linkedin" size='large' link/></a> </p></Tab.Pane> },]
+const panes = [
+    {menuItem: {icon: 'users', content: 'User Account', key: 'users'},
+    render:() => <Tab.Pane><p className='about_p'><strong>Demo Account</strong><br/><strong>Username:</strong> metro <br/><strong>Password:</strong> pizza</p></Tab.Pane> },
+    {menuItem:{icon: 'book', content: 'About Page', key: 'book' }, render: () => <Tab.Pane><p className='about_p'>Metro Pizza Management Center allows administrators<br/> to create or delete menu items for <a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">Metro Pizza</a> site,<br/> as well as receive online orders in real time and manage such orders.<br/> This site was built with React.js and Semantic UI for User Interface and Ruby on Rails as backend.</p></Tab.Pane>}
+  ]
 
 class LoginContainer extends Component{
   constructor(){
     super()
-    this.state ={
-      isLogin: false,
-      usernameInput: 'metro',
-      passwordInput: 'pizza',
-      item_name: '',
-      item_description: '',
-      item_price: 0,
-      img_url: '',
-      user_id: 0,
-      toggleCreateItem: false
-    }
+    this.state ={isLogin: false,usernameInput: 'metro',passwordInput: 'pizza',item_name: '',
+      item_description: '',item_price: 0,img_url: '',user_id: 0,toggleCreateItem: false}
   }
 
   handleInputLogin = (ev)=>{
-    this.setState({
-      [ev.target.name]: ev.target.value.toLowerCase()
-    })
+    this.setState({[ev.target.name]: ev.target.value.toLowerCase()})
   }
 
   handleLoginSubmit = (ev)=>{
     ev.preventDefault()
     fetch('https://backend-metro-pizza.herokuapp.com/api/v1/login',{
       method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        Accept: 'application/json'
-      },
+      headers: {'Content-Type': 'application/json', Accept: 'application/json'},
       body: JSON.stringify({ user: {username: this.state.usernameInput,password: this.state.passwordInput} })
       })
       .then(resp => resp.json())
       .then(json =>{
         if(json.jwt){
-          this.setState({
-            isLogin: true,
-            user_id: json.user.id
-          })
+          this.setState({isLogin: true,user_id: json.user.id})
         }
         else{
           alert('Incorrect username or password')
@@ -61,15 +42,11 @@ class LoginContainer extends Component{
       })}
 
   handleLogout = ()=>{
-    this.setState({
-      isLogin: false
-    })
+    this.setState({isLogin: false})
   }
 
   handleMenuItemsInput =(ev)=>{
-    this.setState({
-      [ev.target.name]: ev.target.value
-    })
+    this.setState({[ev.target.name]: ev.target.value})
   }
 
   handleCreateMenuItems =(ev)=>{
@@ -88,19 +65,14 @@ class LoginContainer extends Component{
       body: JSON.stringify({menu_item: items})
     })
     .then(alert("Item has been added"))
-
   }
 
   handleToggleDisplay =(ev)=>{
     if(ev.target.value === 'createItemForm'){
-      this.setState({
-        toggleCreateItem: true
-      })
+      this.setState({toggleCreateItem: true})
     }
     else if(ev.target.value === 'viewOrders'){
-      this.setState({
-        toggleCreateItem: false
-      })
+      this.setState({toggleCreateItem: false})
     }
   }
 
@@ -131,9 +103,6 @@ class LoginContainer extends Component{
           </Header> <hr/>
           <AdminLogin handleLoginSubmit={this.handleLoginSubmit} handleInputLogin={this.handleInputLogin} loginUser={this.state.usernameInput} loginPassword={this.state.passwordInput}/>
           <Tab panes={panes} id="tab_menu"/>
-          {/* <Header as='h3' textAlign='center' color='black'>
-            <strong>Demo Account: Not case sensitive <hr/>Username: metro <hr/> Password: pizza<hr/></strong>
-          </Header> */}
         </div>
       )
     }

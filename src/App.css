@@ -47,8 +47,6 @@
 }
 #menuIcon{
   float:left;
-  /* z-index: 10;
-  background-color: darkgrey; */
 }
 #dropdown_background{
   background-color: WhiteSmoke;
@@ -59,4 +57,7 @@
 }
 .about_p{
   font-size: 1.3em;
+}
+*{
+  touch-action: none;
 }

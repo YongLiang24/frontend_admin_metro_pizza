@@ -28,7 +28,6 @@ class ManageItems extends Component{
     fetch('https://backend-metro-pizza.herokuapp.com/api/v1/menu_items')
     .then(resp => resp.json())
     .then(json=>{
-      // console.log('checkUserItems..',json)
       this.setState({
         filteredItems: json
       })
@@ -46,10 +45,7 @@ class ManageItems extends Component{
 
   handleShowItemForm = (ev)=>{
     ev.preventDefault()
-    // if(this.state.hideItems){this.setState({hideItems: false})}
-    // else{this.setState({hideItems: true})}
     this.updateItemList()
-
     switch (ev.target.filterCategories.value){
 
       case 'all':
@@ -110,6 +106,3 @@ class ManageItems extends Component{
   }
 }
 export default ManageItems
-
-{/* <h3 key={index}>Name: {item.name} - {item.category} -{' '}
-  <button onClick={this.handleDeleteItem} value={item.id} className="mini circular ui teal button">Delete</button><hr/></h3> */}

@@ -15,7 +15,8 @@ class ManageOrders extends Component{
       customerPhones: [],
       specialInstructions: [],
       totalPrices: [],
-      orderTimes: []
+      orderTimes: [],
+      disableButton: false
     }
   }
   componentDidMount(){
@@ -94,9 +95,11 @@ class ManageOrders extends Component{
   }
 
   handleButtonDisable = (ev)=>{
-    console.log(ev.target.className)
-    ev.target.disabled = true
-    ev.target.className = 'secondary ui  button'
+    if(ev.target.value){
+      ev.target.disabled = true
+      ev.target.className = 'secondary ui  button'
+    }
+
   }
 
   handleDeleteOrder = (ev)=>{
@@ -135,7 +138,7 @@ class ManageOrders extends Component{
               return <Card key={index} id='order_card'
                 header=<div><strong>Customer Name: {this.state.customerNames[index]} || Phone: {this.state.customerPhones[index]} || Time: {this.state.orderTimes[index]}</strong><hr/></div>
                 description=<div><strong>Items: - {order}</strong><hr/>Notes:<br/> {this.state.specialInstructions[index]}<br/><br/>Total Cost: ${this.state.totalPrices[index]}</div>
-                extra=<Button.Group> <Button positive onClick={this.handleButtonDisable}>Confirm Order</Button> <Button.Or />
+                extra=<Button.Group> <Button positive onClick={this.handleButtonDisable} value={index}>Mark Order</Button> <Button.Or />
                   <Button  onClick={this.handleDeleteOrder} name={this.state.orderListIds[index]}>Delete Order</Button>
                 </Button.Group> /> })
           }

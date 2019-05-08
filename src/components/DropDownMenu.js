@@ -7,7 +7,7 @@ const DropDownMenu =(props)=>{
       <Dropdown icon=<Icon  name='bars' size='large' ></Icon> >
         <Dropdown.Menu id="dropdown_background">
           <Button.Group vertical>
-          <a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer"><Button>Visit Pizza Order Site</Button></a>
+          <a href="https://yongliang24.github.io/frontend_customers_metro_pizza/" target="_blank" rel="noopener noreferrer"><Button>Visit Pizza Order Site</Button></a>
           </Button.Group><hr/>
           <a href="https://github.com/YongLiang24" target="_blank" rel="noopener noreferrer">
             <Icon name="github" size='large' link/></a>

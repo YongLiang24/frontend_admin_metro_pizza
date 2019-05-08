@@ -87,6 +87,7 @@ class LoginContainer extends Component{
       headers:{'Content-Type': 'application/json',  Accept: 'application/json' },
       body: JSON.stringify({menu_item: items})
     })
+    .then(alert("Item has been added"))
 
   }
 

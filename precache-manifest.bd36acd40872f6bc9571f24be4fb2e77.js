@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "93ba9b24278f93978dfe605c21e9a453",
+    "revision": "324b4fc6dba7862c423e42d6dd7d4ac3",
     "url": "/frontend_admin_metro_pizza/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/frontend_admin_metro_pizza/static/css/2.f80f2b8a.chunk.css"
   },
   {
-    "revision": "78a8a178eb30f8abb827",
+    "revision": "ef2e7ce50d2c22173094",
     "url": "/frontend_admin_metro_pizza/static/css/main.d941d65d.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/frontend_admin_metro_pizza/static/js/2.e8b7b5da.chunk.js"
   },
   {
-    "revision": "78a8a178eb30f8abb827",
-    "url": "/frontend_admin_metro_pizza/static/js/main.3b741eb7.chunk.js"
+    "revision": "ef2e7ce50d2c22173094",
+    "url": "/frontend_admin_metro_pizza/static/js/main.83bb5f15.chunk.js"
   },
   {
     "revision": "bc3dc5123864510cb42d",

@@ -10,7 +10,7 @@ import DropDownMenu from '../components/DropDownMenu';
 const panes = [
     {menuItem: {icon: 'users', content: 'User Account', key: 'users'},
     render:() => <Tab.Pane><p className='about_p'><strong>Demo Account</strong><br/><strong>Username:</strong> metro <br/><strong>Password:</strong> pizza</p></Tab.Pane> },
-    {menuItem:{icon: 'book', content: 'About Page', key: 'book' }, render: () => <Tab.Pane><p className='about_p'>Metro Pizza Management Center allows administrators<br/> to create or delete menu items for <a href="https://metro-pizza.herokuapp.com/" target="_blank" rel="noopener noreferrer">Metro Pizza</a> site,<br/> as well as receive online orders in real time and manage such orders.<br/> This site was built with React.js and Semantic UI for User Interface and Ruby on Rails as backend.</p></Tab.Pane>}
+    {menuItem:{icon: 'book', content: 'About Page', key: 'book' }, render: () => <Tab.Pane><p className='about_p'>Metro Pizza Management Center allows administrators<br/> to create or delete menu items for <a href="https://yongliang24.github.io/frontend_customers_metro_pizza/" target="_blank" rel="noopener noreferrer">Metro Pizza</a> site,<br/> as well as receive online orders in real time and manage such orders.<br/> This site was built with React.js and Semantic UI for User Interface and Ruby on Rails as backend.</p></Tab.Pane>}
   ]
 
 class LoginContainer extends Component{

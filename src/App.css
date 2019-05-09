@@ -26,7 +26,11 @@
 
 #order_card:hover{
   transform: scale(1.03);
-
+}
+#order_card{
+  border-style:groove;
+  border-width: 3px;
+  border-color: wheat;
 }
 #order_div{
   text-align: center;

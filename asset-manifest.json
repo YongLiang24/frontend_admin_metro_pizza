@@ -1,6 +1,6 @@
 {
   "files": {
-    "main.css": "/frontend_admin_metro_pizza/static/css/main.d941d65d.chunk.css",
+    "main.css": "/frontend_admin_metro_pizza/static/css/main.9984bb0d.chunk.css",
     "main.js": "/frontend_admin_metro_pizza/static/js/main.83bb5f15.chunk.js",
     "main.js.map": "/frontend_admin_metro_pizza/static/js/main.83bb5f15.chunk.js.map",
     "runtime~main.js": "/frontend_admin_metro_pizza/static/js/runtime~main.1ba7b0f3.js",
@@ -9,10 +9,10 @@
     "static/js/2.e8b7b5da.chunk.js": "/frontend_admin_metro_pizza/static/js/2.e8b7b5da.chunk.js",
     "static/js/2.e8b7b5da.chunk.js.map": "/frontend_admin_metro_pizza/static/js/2.e8b7b5da.chunk.js.map",
     "index.html": "/frontend_admin_metro_pizza/index.html",
-    "precache-manifest.bd36acd40872f6bc9571f24be4fb2e77.js": "/frontend_admin_metro_pizza/precache-manifest.bd36acd40872f6bc9571f24be4fb2e77.js",
+    "precache-manifest.a1eda91941ead3ac62fdbdc2e0656768.js": "/frontend_admin_metro_pizza/precache-manifest.a1eda91941ead3ac62fdbdc2e0656768.js",
     "service-worker.js": "/frontend_admin_metro_pizza/service-worker.js",
     "static/css/2.f80f2b8a.chunk.css.map": "/frontend_admin_metro_pizza/static/css/2.f80f2b8a.chunk.css.map",
-    "static/css/main.d941d65d.chunk.css.map": "/frontend_admin_metro_pizza/static/css/main.d941d65d.chunk.css.map",
+    "static/css/main.9984bb0d.chunk.css.map": "/frontend_admin_metro_pizza/static/css/main.9984bb0d.chunk.css.map",
     "static/media/semantic.min.css": "/frontend_admin_metro_pizza/static/media/outline-icons.ef60a4f6.woff",
     "static/media/elf-icon.png": "/frontend_admin_metro_pizza/static/media/elf-icon.f6a00497.png"
   }
